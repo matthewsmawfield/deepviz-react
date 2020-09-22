@@ -319,13 +319,12 @@ export default class Summary extends React.Component {
 
   init() {
 
-    // init
-    d3.select('#collapsed1').style('opacity', 1);
-    d3.select('#collapsed0').style('opacity', 0);
-    vars.collapsed = true;
-    d3.select('#svg_summary2_div')
-    .style('margin-top', -parseFloat(getComputedStyle(document.getElementById('svg_summary1_div'), null).height.replace("px", ""))+'px')
-    .style('opacity', 0);
+    // d3.select('#collapsed1').style('opacity', 1);
+    // d3.select('#collapsed0').style('opacity', 0);
+    // vars.collapsed = true;
+    // d3.select('#svg_summary2_div')
+    // .style('margin-top', -parseFloat(getComputedStyle(document.getElementById('svg_summary1_div'), null).height.replace("px", ""))+'px')
+    // .style('opacity', 0);
 
     // d3.select('#summary')
     // .style('margin-top', function(){

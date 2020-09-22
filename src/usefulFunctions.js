@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default function addCommas(nStr){
 	nStr += '';
 	var x = nStr.split('.');

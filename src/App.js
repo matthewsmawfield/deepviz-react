@@ -1,8 +1,4 @@
 import React from 'react';
-
-import * as d3 from 'd3';
-import {filters} from './filters.js';
-import {filter} from './filter.js';
 import {vars} from './vars.js';
 import * as parseData from './parse-data.js';
 import Summary from './components/Summary/Summary.js';
