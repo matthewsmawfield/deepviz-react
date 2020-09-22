@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/deepviz-react/static/css/main.647a4ddf.chunk.css",
-    "main.js": "/deepviz-react/static/js/main.34476550.chunk.js",
-    "main.js.map": "/deepviz-react/static/js/main.34476550.chunk.js.map",
+    "main.js": "/deepviz-react/static/js/main.59d9c591.chunk.js",
+    "main.js.map": "/deepviz-react/static/js/main.59d9c591.chunk.js.map",
     "runtime-main.js": "/deepviz-react/static/js/runtime-main.e944716d.js",
     "runtime-main.js.map": "/deepviz-react/static/js/runtime-main.e944716d.js.map",
     "static/js/2.3a40797e.chunk.js": "/deepviz-react/static/js/2.3a40797e.chunk.js",
     "static/js/2.3a40797e.chunk.js.map": "/deepviz-react/static/js/2.3a40797e.chunk.js.map",
     "index.html": "/deepviz-react/index.html",
-    "precache-manifest.fa854038184399a4e0ddaf997a5be2b5.js": "/deepviz-react/precache-manifest.fa854038184399a4e0ddaf997a5be2b5.js",
+    "precache-manifest.587fc1201c4164dadd641dd21f91403b.js": "/deepviz-react/precache-manifest.587fc1201c4164dadd641dd21f91403b.js",
     "service-worker.js": "/deepviz-react/service-worker.js",
     "static/css/main.647a4ddf.chunk.css.map": "/deepviz-react/static/css/main.647a4ddf.chunk.css.map",
     "static/js/2.3a40797e.chunk.js.LICENSE.txt": "/deepviz-react/static/js/2.3a40797e.chunk.js.LICENSE.txt",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.e944716d.js",
     "static/js/2.3a40797e.chunk.js",
     "static/css/main.647a4ddf.chunk.css",
-    "static/js/main.34476550.chunk.js"
+    "static/js/main.59d9c591.chunk.js"
   ]
 }
