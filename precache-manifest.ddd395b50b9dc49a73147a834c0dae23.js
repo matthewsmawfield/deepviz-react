@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d9d293ababc3dd3bee074ae4640c018c",
+    "revision": "ac2ef279ec0b88d7ac77add867107ea8",
     "url": "/deepviz-react/index.html"
   },
   {
-    "revision": "55e38928d2f990e6184e",
+    "revision": "aea2222204428ff9ada7",
     "url": "/deepviz-react/static/css/main.f9f2b9f4.chunk.css"
   },
   {
-    "revision": "9eb7d897e805d0cc661c",
-    "url": "/deepviz-react/static/js/2.3a40797e.chunk.js"
+    "revision": "c9a2293d9e31e42bc541",
+    "url": "/deepviz-react/static/js/2.6d2c3a25.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/deepviz-react/static/js/2.3a40797e.chunk.js.LICENSE.txt"
+    "url": "/deepviz-react/static/js/2.6d2c3a25.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "55e38928d2f990e6184e",
-    "url": "/deepviz-react/static/js/main.e3b3c06f.chunk.js"
+    "revision": "aea2222204428ff9ada7",
+    "url": "/deepviz-react/static/js/main.be6eb715.chunk.js"
   },
   {
     "revision": "fbb3d5a6454bf5aaa48b",
