@@ -1,5 +1,5 @@
 import React from 'react';
-import {vars} from './vars.js';
+import {vars} from './Vars.js';
 import * as parseData from './parse-data.js';
 import Summary from './components/Summary/Summary.js';
 import './App.css';

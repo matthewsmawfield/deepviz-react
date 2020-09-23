@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-import {filters} from './filters.js';
-import {vars} from './vars.js';
+import {filters} from './Filters.js';
+import {vars} from './Vars.js';
 import jsonData from './dummy-data.json';
 
 export function parseData(){
@@ -58,7 +58,6 @@ export function parseData(){
 		filters.admin_level=parseInt(vars.urlQueryParams.get('admin_level'));
 	}
 
-	console.log(vars.minDate);
 	// set the data again for reset purposes
 	vars.originalData = vars.data;
 	vars.originalDataAssessments = vars.dataAssessments;

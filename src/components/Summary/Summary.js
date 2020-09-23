@@ -1,9 +1,9 @@
 import React from 'react';
 import * as d3 from 'd3';
 import addCommas from '../../usefulFunctions.js';
-import {filters} from '../../filters.js';
-import {filter} from '../../filter.js';
-import {vars} from '../../vars.js';
+import {filters} from '../../Filters.js';
+import {filter} from '../../Filter.js';
+import {vars} from '../../Vars.js';
 import './Summary.css';
 import {ReactComponent as Summary_entries_1} from './summary_entries_1.svg';  
 import {ReactComponent as Summary_entries_2} from './summary_entries_2.svg';  
@@ -85,7 +85,7 @@ export default class Summary extends React.Component {
     
     this.update();
   }
-  
+
   update() {
 
     var dcEntries = vars.data.filter(function(d){return ((d.date>=vars.dateRange[0])&&(d.date<vars.dateRange[1])) ;});
