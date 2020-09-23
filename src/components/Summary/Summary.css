@@ -5,4 +5,9 @@
 #summary svg { 
   width: 100% !important; 
   height: 100% !important; 
+  display: flex;
+}
+
+#svg_summary2_div {
+	padding-top: 1px;
 }

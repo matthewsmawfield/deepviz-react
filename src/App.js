@@ -9,7 +9,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // parse and organise json data
+    // parse and organise JSON data
     parseData.parseData();
 
     // set initial date range state
@@ -22,11 +22,11 @@ export default class App extends React.Component {
     this.summary = React.createRef();
   }
 
-  // button handler - select random date range then update summary. 
+  // button handler - select random date range then update summary with new calculated totals. 
   updateSummary = () => {
 
     // randomise date range
-    vars.dateRange[0] = new Date(2019,Math.round(Math.random()*11),Math.round(Math.random()*28));    
+    vars.dateRange[0] = new Date(2019,Math.round(Math.random()*3)+9,Math.round(Math.random()*28));    
     vars.dateRange[1] = new Date(2020,Math.round(Math.random()*7),Math.round(Math.random()*28));
 
     this.setState({ 
@@ -34,7 +34,7 @@ export default class App extends React.Component {
       dateTo: vars.dateRange[1].toLocaleDateString() 
     });
 
-    // update summary component
+    // update summary
     this.summary.current.update();
 
   }

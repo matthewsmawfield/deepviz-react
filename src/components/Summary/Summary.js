@@ -31,45 +31,66 @@ export default class Summary extends React.Component {
     this.init();
   }
 
+  init() {
+
+    d3.selectAll('#summary svg tspan').attr('class', function(d,i){
+      var t = d3.select(this).text();
+      if(t.includes('00')){
+        return 'summary-value';
+      } else {
+        return 'summary-label'
+      }
+    });
+
+    d3.selectAll('#summary svg tspan').attr('data-x', function(d,i){
+      var t = d3.select(this).text();
+      if(!t.includes('00')){
+        return d3.select(this).attr('x');
+      } 
+    });
+
+    // topline filters (assessment registry only)
+    vars.topFilters = [
+      {'name': 'coordination_5_box', 'filterFn': function(){ filter('top', 'coordination_5' ); }}, 
+      {'name': 'coordination_2_box', 'filterFn': function(){ filter('top', 'coordination_2' ); }}, 
+      {'name': 'coordination_1_box', 'filterFn': function(){ filter('top', 'coordination_1' ); }}, 
+      {'name': 'harmonized_box', 'filterFn': function(){ filter('top', 'harmonized') }}, 
+      {'name': 'uncoordinated_box', 'filterFn': function(){ filter('top', 'uncoordinated') }}, 
+      {'name': 'lngo_box', 'filterFn': function(){ filter('top', 'lngo') }}, 
+      {'name': 'ingo_box', 'filterFn': function(){ filter('top', 'ingo') }}, 
+      {'name': 'un_agency_box', 'filterFn': function(){ filter('top', 'un_agency') }}, 
+      {'name': 'cluster_box', 'filterFn': function(){ filter('top', 'cluster') }}, 
+      {'name': 'donor_box', 'filterFn': function(){ filter('top', 'donor') }}, 
+      {'name': 'rcrc_box', 'filterFn': function(){ filter('top', 'rcrc') }}, 
+      {'name': 'government_box', 'filterFn': function(){ filter('top', 'government') }},
+      {'name': 'community_group_discussion_box', 'filterFn': function(){ filter('top', 'community_group_discussion' ) }},
+      {'name': 'focus_group_discussion_box', 'filterFn': function(){ filter('top', 'focus_group_discussion' ) }},
+      {'name': 'key_informant_interview_box', 'filterFn': function(){ filter('top', 'key_informant_interview' )}},
+      {'name': 'monitoring_5_box', 'filterFn': function(){ filter('top', 'monitoring_5' ) }},
+      {'name': 'monitoring_2_box', 'filterFn': function(){ filter('top', 'monitoring_2' ) }},
+      {'name': 'monitoring_1_box', 'filterFn': function(){ filter('top', 'monitoring_1' ) }},
+      {'name': 'in_depth_box', 'filterFn': function(){ filter('top', 'in_depth') }},
+      {'name': 'initial_box', 'filterFn': function(){ filter('top', 'initial') }},
+      {'name': 'rapid_box', 'filterFn': function(){ filter('top', 'rapid')}},
+      {'name': 'sector_1_box', 'filterFn': function(){ filter('top', 'sector_1' ) }},
+      {'name': 'sector_2_box', 'filterFn': function(){ filter('top', 'sector_2' ) }},
+      {'name': 'sector_5_box', 'filterFn': function(){ filter('top', 'sector_5' ) }}
+    ];
+
+    vars.topFilters.forEach(function(d,i){
+      var name = d.name.slice(0,-4);
+      var f = 'filter_'+ name;
+      d3.select('#'+f).style('opacity', 0.01).attr('class', 'top_filter');
+    });
+    
+    this.update();
+  }
+  
   update() {
 
     var dcEntries = vars.data.filter(function(d){return ((d.date>=vars.dateRange[0])&&(d.date<vars.dateRange[1])) ;});
     var dc = vars.dataAssessments.filter(function(d){return ((d.date>=vars.dateRange[0])&&(d.date<vars.dateRange[1])) ;});
     var context = [];
-
-    // dcEntries.forEach(function(d,i){
-    //   d.context.forEach(function(dd,ii){
-    //     context.push(dd);
-    //   })
-    // });
-
-    // // contextual rows
-    // var contextualRowTotals = d3.nest()
-    // .key(function(d) { return d;})
-    // .rollup(function(leaves) { return leaves.length; })
-    // .entries(context);
-
-    // d3.selectAll('.total-label').text(0);
-    
-    // contextualRowTotals.forEach(function(d,i){
-    //   d3.select('#total-label'+(d.key-1)).text(addCommas(d.value));
-    // });
-
-    // d3.selectAll('.contextualRow .label')
-    // .attr('x', function(d,i){
-    //   var xoffset = d3.select(this.parentNode).selectAll('.total-label').node().getBBox().width;
-    //   return xoffset + (vars.width-vars.margin.right)-30;
-    // })
-    // .attr('transform', function(){
-    //   var h = d3.select(this).node().getBBox().height;
-    //   var shift = -(h/2)+10;
-    //   return 'translate('+0+','+shift+')';
-    // })
-    // .selectAll('tspan')
-    // .attr('x', function(d,i){
-    //   var xoffset = d3.select(this.parentNode.parentNode).selectAll('.total-label').node().getBBox().width;
-    //   return xoffset + (vars.width-vars.margin.right)-25;
-    // })
 
     var individuals = d3.sum(dc, d => d.individuals);
     var households = d3.sum(dc, d => d.households);
@@ -316,75 +337,6 @@ export default class Summary extends React.Component {
     });
   }
 
-
-  init() {
-
-    // d3.select('#collapsed1').style('opacity', 1);
-    // d3.select('#collapsed0').style('opacity', 0);
-    // vars.collapsed = true;
-    // d3.select('#svg_summary2_div')
-    // .style('margin-top', -parseFloat(getComputedStyle(document.getElementById('svg_summary1_div'), null).height.replace("px", ""))+'px')
-    // .style('opacity', 0);
-
-    // d3.select('#summary')
-    // .style('margin-top', function(){
-    //   var h = parseFloat(getComputedStyle(document.getElementById('svg_summary1_div'), null).height.replace("px", ""))+parseFloat(getComputedStyle(document.getElementById('svg_summary3_div'), null).height.replace("px", ""))+10;
-    //   return h+'px';
-    // });
-
-    d3.selectAll('#summary svg tspan').attr('class', function(d,i){
-      var t = d3.select(this).text();
-      if(t.includes('00')){
-        return 'summary-value';
-      } else {
-        return 'summary-label'
-      }
-    });
-
-    d3.selectAll('#summary svg tspan').attr('data-x', function(d,i){
-      var t = d3.select(this).text();
-      if(!t.includes('00')){
-        return d3.select(this).attr('x');
-      } 
-    });
-
-    // topline filters
-
-    vars.topFilters = [
-      {'name': 'coordination_5_box', 'filterFn': function(){ filter('top', 'coordination_5' ); }}, 
-      {'name': 'coordination_2_box', 'filterFn': function(){ filter('top', 'coordination_2' ); }}, 
-      {'name': 'coordination_1_box', 'filterFn': function(){ filter('top', 'coordination_1' ); }}, 
-      {'name': 'harmonized_box', 'filterFn': function(){ filter('top', 'harmonized') }}, 
-      {'name': 'uncoordinated_box', 'filterFn': function(){ filter('top', 'uncoordinated') }}, 
-      {'name': 'lngo_box', 'filterFn': function(){ filter('top', 'lngo') }}, 
-      {'name': 'ingo_box', 'filterFn': function(){ filter('top', 'ingo') }}, 
-      {'name': 'un_agency_box', 'filterFn': function(){ filter('top', 'un_agency') }}, 
-      {'name': 'cluster_box', 'filterFn': function(){ filter('top', 'cluster') }}, 
-      {'name': 'donor_box', 'filterFn': function(){ filter('top', 'donor') }}, 
-      {'name': 'rcrc_box', 'filterFn': function(){ filter('top', 'rcrc') }}, 
-      {'name': 'government_box', 'filterFn': function(){ filter('top', 'government') }},
-      {'name': 'community_group_discussion_box', 'filterFn': function(){ filter('top', 'community_group_discussion' ) }},
-      {'name': 'focus_group_discussion_box', 'filterFn': function(){ filter('top', 'focus_group_discussion' ) }},
-      {'name': 'key_informant_interview_box', 'filterFn': function(){ filter('top', 'key_informant_interview' )}},
-      {'name': 'monitoring_5_box', 'filterFn': function(){ filter('top', 'monitoring_5' ) }},
-      {'name': 'monitoring_2_box', 'filterFn': function(){ filter('top', 'monitoring_2' ) }},
-      {'name': 'monitoring_1_box', 'filterFn': function(){ filter('top', 'monitoring_1' ) }},
-      {'name': 'in_depth_box', 'filterFn': function(){ filter('top', 'in_depth') }},
-      {'name': 'initial_box', 'filterFn': function(){ filter('top', 'initial') }},
-      {'name': 'rapid_box', 'filterFn': function(){ filter('top', 'rapid')}},
-      {'name': 'sector_1_box', 'filterFn': function(){ filter('top', 'sector_1' ) }},
-      {'name': 'sector_2_box', 'filterFn': function(){ filter('top', 'sector_2' ) }},
-      {'name': 'sector_5_box', 'filterFn': function(){ filter('top', 'sector_5' ) }}
-    ];
-
-    vars.topFilters.forEach(function(d,i){
-      var name = d.name.slice(0,-4);
-      var f = 'filter_'+ name;
-      d3.select('#'+f).style('opacity', 0.01).attr('class', 'top_filter');
-    });
-    this.update();
-  }
-
   render() {
     const Summary1 = this.summary1;
     const Summary2 = this.summary2;
@@ -398,4 +350,3 @@ export default class Summary extends React.Component {
     );
   }
 }
-

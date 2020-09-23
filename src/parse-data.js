@@ -58,6 +58,7 @@ export function parseData(){
 		filters.admin_level=parseInt(vars.urlQueryParams.get('admin_level'));
 	}
 
+	console.log(vars.minDate);
 	// set the data again for reset purposes
 	vars.originalData = vars.data;
 	vars.originalDataAssessments = vars.dataAssessments;
